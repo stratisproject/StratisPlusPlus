@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_Money_H_
 #define STRATIS_API_MODEL_Money_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 namespace stratis {
 namespace api {
@@ -27,39 +27,40 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class Money : public ModelBase {
+class Money : public ModelBase
+{
 public:
-  Money();
-  virtual ~Money();
+    Money();
+    virtual ~Money();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// Money members
+    /////////////////////////////////////////////
+    /// Money members
 
-  /// <summary>
-  ///
-  /// </summary>
-  int64_t getSatoshi() const;
-  bool satoshiIsSet() const;
-  void unsetSatoshi();
+    /// <summary>
+    ///
+    /// </summary>
+    int64_t getSatoshi() const;
+    bool satoshiIsSet() const;
+    void unsetSatoshi();
 
-  void setSatoshi(int64_t value);
+    void setSatoshi(int64_t value);
 
 protected:
-  int64_t m_Satoshi;
-  bool m_SatoshiIsSet;
+    int64_t m_Satoshi;
+    bool m_SatoshiIsSet;
 };
 
 } // namespace model

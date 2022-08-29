@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_UTXOModel_H_
 #define STRATIS_API_MODEL_UTXOModel_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
 
@@ -29,61 +29,62 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class UTXOModel : public ModelBase {
+class UTXOModel : public ModelBase
+{
 public:
-  UTXOModel();
-  virtual ~UTXOModel();
+    UTXOModel();
+    virtual ~UTXOModel();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// UTXOModel members
+    /////////////////////////////////////////////
+    /// UTXOModel members
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getHash() const;
-  bool hashIsSet() const;
-  void unsetHash();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getHash() const;
+    bool hashIsSet() const;
+    void unsetHash();
 
-  void setHash(const utility::string_t &value);
+    void setHash(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  int32_t getN() const;
-  bool NIsSet() const;
-  void unsetN();
+    /// <summary>
+    ///
+    /// </summary>
+    int32_t getN() const;
+    bool NIsSet() const;
+    void unsetN();
 
-  void setN(int32_t value);
+    void setN(int32_t value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  int64_t getSatoshis() const;
-  bool satoshisIsSet() const;
-  void unsetSatoshis();
+    /// <summary>
+    ///
+    /// </summary>
+    int64_t getSatoshis() const;
+    bool satoshisIsSet() const;
+    void unsetSatoshis();
 
-  void setSatoshis(int64_t value);
+    void setSatoshis(int64_t value);
 
 protected:
-  utility::string_t m_Hash;
-  bool m_HashIsSet;
-  int32_t m_N;
-  bool m_NIsSet;
-  int64_t m_Satoshis;
-  bool m_SatoshisIsSet;
+    utility::string_t m_Hash;
+    bool m_HashIsSet;
+    int32_t m_N;
+    bool m_NIsSet;
+    int64_t m_Satoshis;
+    bool m_SatoshisIsSet;
 };
 
 } // namespace model

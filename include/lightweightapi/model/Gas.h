@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_Gas_H_
 #define STRATIS_API_MODEL_Gas_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 namespace stratis {
 namespace api {
@@ -27,39 +27,40 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class Gas : public ModelBase {
+class Gas : public ModelBase
+{
 public:
-  Gas();
-  virtual ~Gas();
+    Gas();
+    virtual ~Gas();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// Gas members
+    /////////////////////////////////////////////
+    /// Gas members
 
-  /// <summary>
-  ///
-  /// </summary>
-  int64_t getValue() const;
-  bool valueIsSet() const;
-  void unsetValue();
+    /// <summary>
+    ///
+    /// </summary>
+    int64_t getValue() const;
+    bool valueIsSet() const;
+    void unsetValue();
 
-  void setValue(int64_t value);
+    void setValue(int64_t value);
 
 protected:
-  int64_t m_Value;
-  bool m_ValueIsSet;
+    int64_t m_Value;
+    bool m_ValueIsSet;
 };
 
 } // namespace model

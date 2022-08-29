@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_TipModel_H_
 #define STRATIS_API_MODEL_TipModel_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
 
@@ -29,50 +29,51 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class TipModel : public ModelBase {
+class TipModel : public ModelBase
+{
 public:
-  TipModel();
-  virtual ~TipModel();
+    TipModel();
+    virtual ~TipModel();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// TipModel members
+    /////////////////////////////////////////////
+    /// TipModel members
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getTipHash() const;
-  bool tipHashIsSet() const;
-  void unsetTipHash();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getTipHash() const;
+    bool tipHashIsSet() const;
+    void unsetTipHash();
 
-  void setTipHash(const utility::string_t &value);
+    void setTipHash(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  int32_t getTipHeight() const;
-  bool tipHeightIsSet() const;
-  void unsetTipHeight();
+    /// <summary>
+    ///
+    /// </summary>
+    int32_t getTipHeight() const;
+    bool tipHeightIsSet() const;
+    void unsetTipHeight();
 
-  void setTipHeight(int32_t value);
+    void setTipHeight(int32_t value);
 
 protected:
-  utility::string_t m_TipHash;
-  bool m_TipHashIsSet;
-  int32_t m_TipHeight;
-  bool m_TipHeightIsSet;
+    utility::string_t m_TipHash;
+    bool m_TipHashIsSet;
+    int32_t m_TipHeight;
+    bool m_TipHeightIsSet;
 };
 
 } // namespace model

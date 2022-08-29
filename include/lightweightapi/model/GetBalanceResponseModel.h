@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_GetBalanceResponseModel_H_
 #define STRATIS_API_MODEL_GetBalanceResponseModel_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 namespace stratis {
 namespace api {
@@ -27,39 +27,40 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class GetBalanceResponseModel : public ModelBase {
+class GetBalanceResponseModel : public ModelBase
+{
 public:
-  GetBalanceResponseModel();
-  virtual ~GetBalanceResponseModel();
+    GetBalanceResponseModel();
+    virtual ~GetBalanceResponseModel();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// GetBalanceResponseModel members
+    /////////////////////////////////////////////
+    /// GetBalanceResponseModel members
 
-  /// <summary>
-  ///
-  /// </summary>
-  int64_t getBalance() const;
-  bool balanceIsSet() const;
-  void unsetBalance();
+    /// <summary>
+    ///
+    /// </summary>
+    int64_t getBalance() const;
+    bool balanceIsSet() const;
+    void unsetBalance();
 
-  void setBalance(int64_t value);
+    void setBalance(int64_t value);
 
 protected:
-  int64_t m_Balance;
-  bool m_BalanceIsSet;
+    int64_t m_Balance;
+    bool m_BalanceIsSet;
 };
 
 } // namespace model

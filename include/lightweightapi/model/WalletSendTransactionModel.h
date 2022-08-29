@@ -18,9 +18,9 @@
 #ifndef STRATIS_API_MODEL_WalletSendTransactionModel_H_
 #define STRATIS_API_MODEL_WalletSendTransactionModel_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
-#include "StratisCPPLightClient/model/TransactionOutputModel.h"
+#include "lightweightapi/model/TransactionOutputModel.h"
 #include <cpprest/details/basic_types.h>
 #include <vector>
 
@@ -33,51 +33,52 @@ class TransactionOutputModel;
 /// <summary>
 ///
 /// </summary>
-class WalletSendTransactionModel : public ModelBase {
+class WalletSendTransactionModel : public ModelBase
+{
 public:
-  WalletSendTransactionModel();
-  virtual ~WalletSendTransactionModel();
+    WalletSendTransactionModel();
+    virtual ~WalletSendTransactionModel();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// WalletSendTransactionModel members
+    /////////////////////////////////////////////
+    /// WalletSendTransactionModel members
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getTransactionId() const;
-  bool transactionIdIsSet() const;
-  void unsetTransactionId();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getTransactionId() const;
+    bool transactionIdIsSet() const;
+    void unsetTransactionId();
 
-  void setTransactionId(const utility::string_t &value);
+    void setTransactionId(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::vector<std::shared_ptr<TransactionOutputModel>> &getOutputs();
-  bool outputsIsSet() const;
-  void unsetOutputs();
+    /// <summary>
+    ///
+    /// </summary>
+    std::vector<std::shared_ptr<TransactionOutputModel>>& getOutputs();
+    bool outputsIsSet() const;
+    void unsetOutputs();
 
-  void
-  setOutputs(const std::vector<std::shared_ptr<TransactionOutputModel>> &value);
+    void
+    setOutputs(const std::vector<std::shared_ptr<TransactionOutputModel>>& value);
 
 protected:
-  utility::string_t m_TransactionId;
-  bool m_TransactionIdIsSet;
-  std::vector<std::shared_ptr<TransactionOutputModel>> m_Outputs;
-  bool m_OutputsIsSet;
+    utility::string_t m_TransactionId;
+    bool m_TransactionIdIsSet;
+    std::vector<std::shared_ptr<TransactionOutputModel>> m_Outputs;
+    bool m_OutputsIsSet;
 };
 
 } // namespace model

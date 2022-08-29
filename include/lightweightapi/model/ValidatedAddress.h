@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_ValidatedAddress_H_
 #define STRATIS_API_MODEL_ValidatedAddress_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
 
@@ -29,83 +29,84 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class ValidatedAddress : public ModelBase {
+class ValidatedAddress : public ModelBase
+{
 public:
-  ValidatedAddress();
-  virtual ~ValidatedAddress();
+    ValidatedAddress();
+    virtual ~ValidatedAddress();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// ValidatedAddress members
+    /////////////////////////////////////////////
+    /// ValidatedAddress members
 
-  /// <summary>
-  ///
-  /// </summary>
-  bool isIsvalid() const;
-  bool isvalidIsSet() const;
-  void unsetIsvalid();
+    /// <summary>
+    ///
+    /// </summary>
+    bool isIsvalid() const;
+    bool isvalidIsSet() const;
+    void unsetIsvalid();
 
-  void setIsvalid(bool value);
+    void setIsvalid(bool value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getAddress() const;
-  bool addressIsSet() const;
-  void unsetAddress();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getAddress() const;
+    bool addressIsSet() const;
+    void unsetAddress();
 
-  void setAddress(const utility::string_t &value);
+    void setAddress(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getScriptPubKey() const;
-  bool scriptPubKeyIsSet() const;
-  void unsetScriptPubKey();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getScriptPubKey() const;
+    bool scriptPubKeyIsSet() const;
+    void unsetScriptPubKey();
 
-  void setScriptPubKey(const utility::string_t &value);
+    void setScriptPubKey(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  bool isIsscript() const;
-  bool isscriptIsSet() const;
-  void unsetIsscript();
+    /// <summary>
+    ///
+    /// </summary>
+    bool isIsscript() const;
+    bool isscriptIsSet() const;
+    void unsetIsscript();
 
-  void setIsscript(bool value);
+    void setIsscript(bool value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  bool isIswitness() const;
-  bool iswitnessIsSet() const;
-  void unsetIswitness();
+    /// <summary>
+    ///
+    /// </summary>
+    bool isIswitness() const;
+    bool iswitnessIsSet() const;
+    void unsetIswitness();
 
-  void setIswitness(bool value);
+    void setIswitness(bool value);
 
 protected:
-  bool m_Isvalid;
-  bool m_IsvalidIsSet;
-  utility::string_t m_Address;
-  bool m_AddressIsSet;
-  utility::string_t m_ScriptPubKey;
-  bool m_ScriptPubKeyIsSet;
-  bool m_Isscript;
-  bool m_IsscriptIsSet;
-  bool m_Iswitness;
-  bool m_IswitnessIsSet;
+    bool m_Isvalid;
+    bool m_IsvalidIsSet;
+    utility::string_t m_Address;
+    bool m_AddressIsSet;
+    utility::string_t m_ScriptPubKey;
+    bool m_ScriptPubKeyIsSet;
+    bool m_Isscript;
+    bool m_IsscriptIsSet;
+    bool m_Iswitness;
+    bool m_IswitnessIsSet;
 };
 
 } // namespace model

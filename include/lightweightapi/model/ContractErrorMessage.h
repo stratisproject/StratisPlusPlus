@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_ContractErrorMessage_H_
 #define STRATIS_API_MODEL_ContractErrorMessage_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
 
@@ -29,39 +29,40 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class ContractErrorMessage : public ModelBase {
+class ContractErrorMessage : public ModelBase
+{
 public:
-  ContractErrorMessage();
-  virtual ~ContractErrorMessage();
+    ContractErrorMessage();
+    virtual ~ContractErrorMessage();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// ContractErrorMessage members
+    /////////////////////////////////////////////
+    /// ContractErrorMessage members
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getValue() const;
-  bool valueIsSet() const;
-  void unsetValue();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getValue() const;
+    bool valueIsSet() const;
+    void unsetValue();
 
-  void setValue(const utility::string_t &value);
+    void setValue(const utility::string_t& value);
 
 protected:
-  utility::string_t m_Value;
-  bool m_ValueIsSet;
+    utility::string_t m_Value;
+    bool m_ValueIsSet;
 };
 
 } // namespace model

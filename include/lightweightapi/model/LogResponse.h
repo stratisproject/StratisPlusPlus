@@ -18,9 +18,9 @@
 #ifndef STRATIS_API_MODEL_LogResponse_H_
 #define STRATIS_API_MODEL_LogResponse_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
-#include "StratisCPPLightClient/model/LogData.h"
+#include "lightweightapi/model/LogData.h"
 #include <cpprest/details/basic_types.h>
 #include <vector>
 
@@ -33,72 +33,73 @@ class LogData;
 /// <summary>
 ///
 /// </summary>
-class LogResponse : public ModelBase {
+class LogResponse : public ModelBase
+{
 public:
-  LogResponse();
-  virtual ~LogResponse();
+    LogResponse();
+    virtual ~LogResponse();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// LogResponse members
+    /////////////////////////////////////////////
+    /// LogResponse members
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getAddress() const;
-  bool addressIsSet() const;
-  void unsetAddress();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getAddress() const;
+    bool addressIsSet() const;
+    void unsetAddress();
 
-  void setAddress(const utility::string_t &value);
+    void setAddress(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::vector<utility::string_t> &getTopics();
-  bool topicsIsSet() const;
-  void unsetTopics();
+    /// <summary>
+    ///
+    /// </summary>
+    std::vector<utility::string_t>& getTopics();
+    bool topicsIsSet() const;
+    void unsetTopics();
 
-  void setTopics(const std::vector<utility::string_t> &value);
+    void setTopics(const std::vector<utility::string_t>& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getData() const;
-  bool dataIsSet() const;
-  void unsetData();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getData() const;
+    bool dataIsSet() const;
+    void unsetData();
 
-  void setData(const utility::string_t &value);
+    void setData(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::shared_ptr<LogData> getLog() const;
-  bool logIsSet() const;
-  void unsetLog();
+    /// <summary>
+    ///
+    /// </summary>
+    std::shared_ptr<LogData> getLog() const;
+    bool logIsSet() const;
+    void unsetLog();
 
-  void setLog(const std::shared_ptr<LogData> &value);
+    void setLog(const std::shared_ptr<LogData>& value);
 
 protected:
-  utility::string_t m_Address;
-  bool m_AddressIsSet;
-  std::vector<utility::string_t> m_Topics;
-  bool m_TopicsIsSet;
-  utility::string_t m_Data;
-  bool m_DataIsSet;
-  std::shared_ptr<LogData> m_Log;
-  bool m_LogIsSet;
+    utility::string_t m_Address;
+    bool m_AddressIsSet;
+    std::vector<utility::string_t> m_Topics;
+    bool m_TopicsIsSet;
+    utility::string_t m_Data;
+    bool m_DataIsSet;
+    std::shared_ptr<LogData> m_Log;
+    bool m_LogIsSet;
 };
 
 } // namespace model

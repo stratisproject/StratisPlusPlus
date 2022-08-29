@@ -18,9 +18,8 @@
 #ifndef STRATIS_API_MODEL_NFTContractModel_H_
 #define STRATIS_API_MODEL_NFTContractModel_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
-#include "StratisCPPLightClient/model/Set.h"
 #include <cpprest/details/basic_types.h>
 #include <map>
 #include <vector>
@@ -32,73 +31,74 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class NFTContractModel : public ModelBase {
+class NFTContractModel : public ModelBase
+{
 public:
-  NFTContractModel();
-  virtual ~NFTContractModel();
+    NFTContractModel();
+    virtual ~NFTContractModel();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// NFTContractModel members
+    /////////////////////////////////////////////
+    /// NFTContractModel members
 
-  /// <summary>
-  ///
-  /// </summary>
-  int32_t getId() const;
-  bool idIsSet() const;
-  void unsetId();
+    /// <summary>
+    ///
+    /// </summary>
+    int32_t getId() const;
+    bool idIsSet() const;
+    void unsetId();
 
-  void setId(int32_t value);
+    void setId(int32_t value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getContractAddress() const;
-  bool contractAddressIsSet() const;
-  void unsetContractAddress();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getContractAddress() const;
+    bool contractAddressIsSet() const;
+    void unsetContractAddress();
 
-  void setContractAddress(const utility::string_t &value);
+    void setContractAddress(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::map<utility::string_t, Set<int64_t>> &getOwnedIDsByAddress();
-  bool ownedIDsByAddressIsSet() const;
-  void unsetOwnedIDsByAddress();
+    /// <summary>
+    ///
+    /// </summary>
+    std::map<utility::string_t, std::vector<int64_t>>& getOwnedIDsByAddress();
+    bool ownedIDsByAddressIsSet() const;
+    void unsetOwnedIDsByAddress();
 
-  void
-  setOwnedIDsByAddress(const std::map<utility::string_t, Set<int64_t>> &value);
+    void
+    setOwnedIDsByAddress(const std::map<utility::string_t, std::vector<int64_t>>& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  int32_t getLastUpdatedBlock() const;
-  bool lastUpdatedBlockIsSet() const;
-  void unsetLastUpdatedBlock();
+    /// <summary>
+    ///
+    /// </summary>
+    int32_t getLastUpdatedBlock() const;
+    bool lastUpdatedBlockIsSet() const;
+    void unsetLastUpdatedBlock();
 
-  void setLastUpdatedBlock(int32_t value);
+    void setLastUpdatedBlock(int32_t value);
 
 protected:
-  int32_t m_Id;
-  bool m_IdIsSet;
-  utility::string_t m_ContractAddress;
-  bool m_ContractAddressIsSet;
-  std::map<utility::string_t, Set<int64_t>> m_OwnedIDsByAddress;
-  bool m_OwnedIDsByAddressIsSet;
-  int32_t m_LastUpdatedBlock;
-  bool m_LastUpdatedBlockIsSet;
+    int32_t m_Id;
+    bool m_IdIsSet;
+    utility::string_t m_ContractAddress;
+    bool m_ContractAddressIsSet;
+    std::map<utility::string_t, std::vector<int64_t>> m_OwnedIDsByAddress;
+    bool m_OwnedIDsByAddressIsSet;
+    int32_t m_LastUpdatedBlock;
+    bool m_LastUpdatedBlockIsSet;
 };
 
 } // namespace model

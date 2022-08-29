@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_OwnedNFTsModel_H_
 #define STRATIS_API_MODEL_OwnedNFTsModel_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 #include <map>
 #include <vector>
@@ -30,41 +30,42 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class OwnedNFTsModel : public ModelBase {
+class OwnedNFTsModel : public ModelBase
+{
 public:
-  OwnedNFTsModel();
-  virtual ~OwnedNFTsModel();
+    OwnedNFTsModel();
+    virtual ~OwnedNFTsModel();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// OwnedNFTsModel members
+    /////////////////////////////////////////////
+    /// OwnedNFTsModel members
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::map<utility::string_t, std::vector<int64_t>> &
-  getOwnedIDsByContractAddress();
-  bool ownedIDsByContractAddressIsSet() const;
-  void unsetOwnedIDsByContractAddress();
+    /// <summary>
+    ///
+    /// </summary>
+    std::map<utility::string_t, std::vector<int64_t>>&
+    getOwnedIDsByContractAddress();
+    bool ownedIDsByContractAddressIsSet() const;
+    void unsetOwnedIDsByContractAddress();
 
-  void setOwnedIDsByContractAddress(
-      const std::map<utility::string_t, std::vector<int64_t>> &value);
+    void setOwnedIDsByContractAddress(
+        const std::map<utility::string_t, std::vector<int64_t>>& value);
 
 protected:
-  std::map<utility::string_t, std::vector<int64_t>> m_OwnedIDsByContractAddress;
-  bool m_OwnedIDsByContractAddressIsSet;
+    std::map<utility::string_t, std::vector<int64_t>> m_OwnedIDsByContractAddress;
+    bool m_OwnedIDsByContractAddressIsSet;
 };
 
 } // namespace model

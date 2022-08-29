@@ -10,17 +10,19 @@
 
 cmake_minimum_required (VERSION 3.1)
 
-project(StratisCPPLightClient)
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
+project(stratis++)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CXX_STANDARD_REQUIRED ON)
 
 if(NOT CMAKE_CXX_STANDARD)
-    set(CMAKE_CXX_STANDARD 14)
+    set(CMAKE_CXX_STANDARD 17)
 endif()
 
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release)
+    set(CMAKE_BUILD_TYPE Debug)
 endif()
 
 find_package(cpprestsdk REQUIRED)
@@ -30,15 +32,12 @@ include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
 file(GLOB_RECURSE HEADER_FILES "include/*.h")
-file(GLOB_RECURSE SOURCE_FILES "src/*.cpp")
+file(GLOB_RECURSE SOURCE_FILES "src/*.cpp" "src/*.c")
 
 add_library(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES})
+add_executable(demo test/main.cpp)
 
-target_compile_options(${PROJECT_NAME}
-    PRIVATE
-        $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-            -Wall -Wno-unused-variable>
-)
+include_directories("${OPENSSL_INCLUDE_DIR}")
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC
@@ -51,20 +50,26 @@ target_link_directories(${PROJECT_NAME}
         ${Boost_LIBRARY_DIRS}
 )
 
+set(OPENSSL_ROOT_DIR /usr/local/opt/openssl@3)
+find_package(OpenSSL REQUIRED)
+target_include_directories(demo PUBLIC "${OPENSSL_INCLUDE_DIR}")
+
 if (UNIX)
     message(STATUS "Building client library for Linux/Unix")
 
-    target_link_libraries(${PROJECT_NAME} PUBLIC cpprest ${Boost_LIBRARIES} crypto)
+    target_link_libraries(${PROJECT_NAME} PUBLIC cpprestsdk::cpprest ${Boost_LIBRARIES} OpenSSL::Crypto)
 else()
     message(STATUS "Building client library for Windows")
 
-    target_link_libraries(${PROJECT_NAME} PUBLIC cpprestsdk::cpprest ${Boost_LIBRARIES} bcrypt)
+    target_link_libraries(${PROJECT_NAME} PUBLIC cpprestsdk::cpprest ${Boost_LIBRARIES} bcrypt OpenSSL::Crypto)
 endif()
 
 configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in
     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
     INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
 )
+
+target_link_libraries(demo PUBLIC cpprestsdk::cpprest ${Boost_LIBRARIES} OpenSSL::Crypto ${PROJECT_NAME})
 
 install(
     TARGETS ${PROJECT_NAME}

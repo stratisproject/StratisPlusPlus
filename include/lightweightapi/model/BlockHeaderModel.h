@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_BlockHeaderModel_H_
 #define STRATIS_API_MODEL_BlockHeaderModel_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
 
@@ -29,94 +29,95 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class BlockHeaderModel : public ModelBase {
+class BlockHeaderModel : public ModelBase
+{
 public:
-  BlockHeaderModel();
-  virtual ~BlockHeaderModel();
+    BlockHeaderModel();
+    virtual ~BlockHeaderModel();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// BlockHeaderModel members
+    /////////////////////////////////////////////
+    /// BlockHeaderModel members
 
-  /// <summary>
-  ///
-  /// </summary>
-  int32_t getVersion() const;
-  bool versionIsSet() const;
-  void unsetVersion();
+    /// <summary>
+    ///
+    /// </summary>
+    int32_t getVersion() const;
+    bool versionIsSet() const;
+    void unsetVersion();
 
-  void setVersion(int32_t value);
+    void setVersion(int32_t value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getMerkleroot() const;
-  bool merklerootIsSet() const;
-  void unsetMerkleroot();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getMerkleroot() const;
+    bool merklerootIsSet() const;
+    void unsetMerkleroot();
 
-  void setMerkleroot(const utility::string_t &value);
+    void setMerkleroot(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  int32_t getNonce() const;
-  bool nonceIsSet() const;
-  void unsetNonce();
+    /// <summary>
+    ///
+    /// </summary>
+    int32_t getNonce() const;
+    bool nonceIsSet() const;
+    void unsetNonce();
 
-  void setNonce(int32_t value);
+    void setNonce(int32_t value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getBits() const;
-  bool bitsIsSet() const;
-  void unsetBits();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getBits() const;
+    bool bitsIsSet() const;
+    void unsetBits();
 
-  void setBits(const utility::string_t &value);
+    void setBits(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getPreviousblockhash() const;
-  bool previousblockhashIsSet() const;
-  void unsetPreviousblockhash();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getPreviousblockhash() const;
+    bool previousblockhashIsSet() const;
+    void unsetPreviousblockhash();
 
-  void setPreviousblockhash(const utility::string_t &value);
+    void setPreviousblockhash(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  int32_t getTime() const;
-  bool timeIsSet() const;
-  void unsetTime();
+    /// <summary>
+    ///
+    /// </summary>
+    int32_t getTime() const;
+    bool timeIsSet() const;
+    void unsetTime();
 
-  void setTime(int32_t value);
+    void setTime(int32_t value);
 
 protected:
-  int32_t m_Version;
-  bool m_VersionIsSet;
-  utility::string_t m_Merkleroot;
-  bool m_MerklerootIsSet;
-  int32_t m_Nonce;
-  bool m_NonceIsSet;
-  utility::string_t m_Bits;
-  bool m_BitsIsSet;
-  utility::string_t m_Previousblockhash;
-  bool m_PreviousblockhashIsSet;
-  int32_t m_Time;
-  bool m_TimeIsSet;
+    int32_t m_Version;
+    bool m_VersionIsSet;
+    utility::string_t m_Merkleroot;
+    bool m_MerklerootIsSet;
+    int32_t m_Nonce;
+    bool m_NonceIsSet;
+    utility::string_t m_Bits;
+    bool m_BitsIsSet;
+    utility::string_t m_Previousblockhash;
+    bool m_PreviousblockhashIsSet;
+    int32_t m_Time;
+    bool m_TimeIsSet;
 };
 
 } // namespace model

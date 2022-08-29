@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_JsonBody_H_
 #define STRATIS_API_MODEL_JsonBody_H_
 
-#include "StratisCPPLightClient/IHttpBody.h"
+#include "lightweightapi/IHttpBody.h"
 
 #include <cpprest/json.h>
 
@@ -26,15 +26,16 @@ namespace stratis {
 namespace api {
 namespace model {
 
-class JsonBody : public IHttpBody {
+class JsonBody : public IHttpBody
+{
 public:
-  JsonBody(const web::json::value &value);
-  virtual ~JsonBody();
+    JsonBody(const web::json::value& value);
+    virtual ~JsonBody();
 
-  void writeTo(std::ostream &target) override;
+    void writeTo(std::ostream& target) override;
 
 protected:
-  web::json::value m_Json;
+    web::json::value m_Json;
 };
 
 } // namespace model

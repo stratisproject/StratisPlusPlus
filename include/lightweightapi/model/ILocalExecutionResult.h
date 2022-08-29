@@ -18,14 +18,13 @@
 #ifndef STRATIS_API_MODEL_ILocalExecutionResult_H_
 #define STRATIS_API_MODEL_ILocalExecutionResult_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
-#include "StratisCPPLightClient/Object.h"
-#include "StratisCPPLightClient/model/AnyType.h"
-#include "StratisCPPLightClient/model/ContractErrorMessage.h"
-#include "StratisCPPLightClient/model/Gas.h"
-#include "StratisCPPLightClient/model/Log.h"
-#include "StratisCPPLightClient/model/TransferInfo.h"
+#include "lightweightapi/Object.h"
+#include "lightweightapi/model/ContractErrorMessage.h"
+#include "lightweightapi/model/Gas.h"
+#include "lightweightapi/model/Log.h"
+#include "lightweightapi/model/TransferInfo.h"
 #include <vector>
 
 namespace stratis {
@@ -40,106 +39,107 @@ class Log;
 /// <summary>
 ///
 /// </summary>
-class ILocalExecutionResult : public ModelBase {
+class ILocalExecutionResult : public ModelBase
+{
 public:
-  ILocalExecutionResult();
-  virtual ~ILocalExecutionResult();
+    ILocalExecutionResult();
+    virtual ~ILocalExecutionResult();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// ILocalExecutionResult members
+    /////////////////////////////////////////////
+    /// ILocalExecutionResult members
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::vector<std::shared_ptr<TransferInfo>> &getInternalTransfers();
-  bool internalTransfersIsSet() const;
-  void unsetInternalTransfers();
+    /// <summary>
+    ///
+    /// </summary>
+    std::vector<std::shared_ptr<TransferInfo>>& getInternalTransfers();
+    bool internalTransfersIsSet() const;
+    void unsetInternalTransfers();
 
-  void
-  setInternalTransfers(const std::vector<std::shared_ptr<TransferInfo>> &value);
+    void
+    setInternalTransfers(const std::vector<std::shared_ptr<TransferInfo>>& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::shared_ptr<Gas> getGasConsumed() const;
-  bool gasConsumedIsSet() const;
-  void unsetGasConsumed();
+    /// <summary>
+    ///
+    /// </summary>
+    std::shared_ptr<Gas> getGasConsumed() const;
+    bool gasConsumedIsSet() const;
+    void unsetGasConsumed();
 
-  void setGasConsumed(const std::shared_ptr<Gas> &value);
+    void setGasConsumed(const std::shared_ptr<Gas>& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  bool isRevert() const;
-  bool revertIsSet() const;
-  void unsetRevert();
+    /// <summary>
+    ///
+    /// </summary>
+    bool isRevert() const;
+    bool revertIsSet() const;
+    void unsetRevert();
 
-  void setRevert(bool value);
+    void setRevert(bool value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::shared_ptr<ContractErrorMessage> getErrorMessage() const;
-  bool errorMessageIsSet() const;
-  void unsetErrorMessage();
+    /// <summary>
+    ///
+    /// </summary>
+    std::shared_ptr<ContractErrorMessage> getErrorMessage() const;
+    bool errorMessageIsSet() const;
+    void unsetErrorMessage();
 
-  void setErrorMessage(const std::shared_ptr<ContractErrorMessage> &value);
+    void setErrorMessage(const std::shared_ptr<ContractErrorMessage>& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::shared_ptr<AnyType> getRReturn() const;
-  bool rReturnIsSet() const;
-  void unsetr_Return();
+    /// <summary>
+    ///
+    /// </summary>
+    std::shared_ptr<Object> getRReturn() const;
+    bool rReturnIsSet() const;
+    void unsetr_Return();
 
-  void setRReturn(const std::shared_ptr<AnyType> &value);
+    void setRReturn(const std::shared_ptr<Object>& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::vector<std::shared_ptr<Log>> &getLogs();
-  bool logsIsSet() const;
-  void unsetLogs();
+    /// <summary>
+    ///
+    /// </summary>
+    std::vector<std::shared_ptr<Log>>& getLogs();
+    bool logsIsSet() const;
+    void unsetLogs();
 
-  void setLogs(const std::vector<std::shared_ptr<Log>> &value);
+    void setLogs(const std::vector<std::shared_ptr<Log>>& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::shared_ptr<Object> getStateRoot() const;
-  bool stateRootIsSet() const;
-  void unsetStateRoot();
+    /// <summary>
+    ///
+    /// </summary>
+    std::shared_ptr<Object> getStateRoot() const;
+    bool stateRootIsSet() const;
+    void unsetStateRoot();
 
-  void setStateRoot(const std::shared_ptr<Object> &value);
+    void setStateRoot(const std::shared_ptr<Object>& value);
 
 protected:
-  std::vector<std::shared_ptr<TransferInfo>> m_InternalTransfers;
-  bool m_InternalTransfersIsSet;
-  std::shared_ptr<Gas> m_GasConsumed;
-  bool m_GasConsumedIsSet;
-  bool m_Revert;
-  bool m_RevertIsSet;
-  std::shared_ptr<ContractErrorMessage> m_ErrorMessage;
-  bool m_ErrorMessageIsSet;
-  std::shared_ptr<AnyType> m_r_Return;
-  bool m_r_ReturnIsSet;
-  std::vector<std::shared_ptr<Log>> m_Logs;
-  bool m_LogsIsSet;
-  std::shared_ptr<Object> m_StateRoot;
-  bool m_StateRootIsSet;
+    std::vector<std::shared_ptr<TransferInfo>> m_InternalTransfers;
+    bool m_InternalTransfersIsSet;
+    std::shared_ptr<Gas> m_GasConsumed;
+    bool m_GasConsumedIsSet;
+    bool m_Revert;
+    bool m_RevertIsSet;
+    std::shared_ptr<ContractErrorMessage> m_ErrorMessage;
+    bool m_ErrorMessageIsSet;
+    std::shared_ptr<Object> m_r_Return;
+    bool m_r_ReturnIsSet;
+    std::vector<std::shared_ptr<Log>> m_Logs;
+    bool m_LogsIsSet;
+    std::shared_ptr<Object> m_StateRoot;
+    bool m_StateRootIsSet;
 };
 
 } // namespace model

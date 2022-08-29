@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_TransferInfo_H_
 #define STRATIS_API_MODEL_TransferInfo_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
 
@@ -29,61 +29,62 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class TransferInfo : public ModelBase {
+class TransferInfo : public ModelBase
+{
 public:
-  TransferInfo();
-  virtual ~TransferInfo();
+    TransferInfo();
+    virtual ~TransferInfo();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// TransferInfo members
+    /////////////////////////////////////////////
+    /// TransferInfo members
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getFrom() const;
-  bool fromIsSet() const;
-  void unsetFrom();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getFrom() const;
+    bool fromIsSet() const;
+    void unsetFrom();
 
-  void setFrom(const utility::string_t &value);
+    void setFrom(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getTo() const;
-  bool toIsSet() const;
-  void unsetTo();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getTo() const;
+    bool toIsSet() const;
+    void unsetTo();
 
-  void setTo(const utility::string_t &value);
+    void setTo(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  int64_t getValue() const;
-  bool valueIsSet() const;
-  void unsetValue();
+    /// <summary>
+    ///
+    /// </summary>
+    int64_t getValue() const;
+    bool valueIsSet() const;
+    void unsetValue();
 
-  void setValue(int64_t value);
+    void setValue(int64_t value);
 
 protected:
-  utility::string_t m_From;
-  bool m_FromIsSet;
-  utility::string_t m_To;
-  bool m_ToIsSet;
-  int64_t m_Value;
-  bool m_ValueIsSet;
+    utility::string_t m_From;
+    bool m_FromIsSet;
+    utility::string_t m_To;
+    bool m_ToIsSet;
+    int64_t m_Value;
+    bool m_ValueIsSet;
 };
 
 } // namespace model

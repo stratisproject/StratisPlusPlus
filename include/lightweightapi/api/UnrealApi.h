@@ -18,24 +18,24 @@
 #ifndef STRATIS_API_UnrealApi_H_
 #define STRATIS_API_UnrealApi_H_
 
-#include "StratisCPPLightClient/ApiClient.h"
+#include "../ApiClient.h"
+#include "../model/BlockHeaderModel.h"
+#include "../model/BlockModel.h"
+#include "../model/ErrorResult.h"
+#include "../model/GetBalanceResponseModel.h"
+#include "../model/GetUTXOsResponseModel.h"
+#include "../model/ILocalExecutionResult.h"
+#include "../model/LocalCallContractRequest.h"
+#include "../model/NFTContractModel.h"
+#include "../model/OwnedNFTsModel.h"
+#include "../model/ProblemDetails.h"
+#include "../model/RawTxModel.h"
+#include "../model/ReceiptResponse.h"
+#include "../model/SendTransactionRequest.h"
+#include "../model/TipModel.h"
+#include "../model/ValidatedAddress.h"
+#include "../model/WalletSendTransactionModel.h"
 
-#include "StratisCPPLightClient/model/BlockHeaderModel.h"
-#include "StratisCPPLightClient/model/BlockModel.h"
-#include "StratisCPPLightClient/model/ErrorResult.h"
-#include "StratisCPPLightClient/model/GetBalanceResponseModel.h"
-#include "StratisCPPLightClient/model/GetUTXOsResponseModel.h"
-#include "StratisCPPLightClient/model/ILocalExecutionResult.h"
-#include "StratisCPPLightClient/model/LocalCallContractRequest.h"
-#include "StratisCPPLightClient/model/NFTContractModel.h"
-#include "StratisCPPLightClient/model/OwnedNFTsModel.h"
-#include "StratisCPPLightClient/model/ProblemDetails.h"
-#include "StratisCPPLightClient/model/RawTxModel.h"
-#include "StratisCPPLightClient/model/ReceiptResponse.h"
-#include "StratisCPPLightClient/model/SendTransactionRequest.h"
-#include "StratisCPPLightClient/model/TipModel.h"
-#include "StratisCPPLightClient/model/ValidatedAddress.h"
-#include "StratisCPPLightClient/model/WalletSendTransactionModel.h"
 #include <boost/optional.hpp>
 #include <cpprest/details/basic_types.h>
 #include <vector>
@@ -45,203 +45,204 @@ namespace api {
 
 using namespace stratis::api::model;
 
-class UnrealApi {
+class UnrealApi
+{
 public:
-  explicit UnrealApi(std::shared_ptr<const ApiClient> apiClient);
+    explicit UnrealApi(std::shared_ptr<const ApiClient> apiClient);
 
-  virtual ~UnrealApi();
+    virtual ~UnrealApi();
 
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="hash"></param>
-  /// <param name="showTransactionDetails"> (optional, default to false)</param>
-  /// <param name="outputJson"> (optional, default to false)</param>
-  pplx::task<std::shared_ptr<BlockModel>>
-  unity3dBlockGet(utility::string_t hash,
-                  boost::optional<bool> showTransactionDetails,
-                  boost::optional<bool> outputJson) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="contractAddress"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param>
-  pplx::task<std::shared_ptr<NFTContractModel>>
-  unity3dGetAllNftOwnersByContractAddressGet(
-      boost::optional<utility::string_t> contractAddress) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="ownerAddress"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param>
-  pplx::task<std::shared_ptr<OwnedNFTsModel>>
-  unity3dGetOwnedNftsGet(boost::optional<utility::string_t> ownerAddress) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  pplx::task<std::vector<utility::string_t>>
-  unity3dGetWatchedNftContractsGet() const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="address"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param>
-  pplx::task<std::shared_ptr<GetBalanceResponseModel>>
-  unity3dGetaddressbalanceGet(boost::optional<utility::string_t> address) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="hash"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param>
-  pplx::task<std::shared_ptr<BlockHeaderModel>>
-  unity3dGetblockheaderGet(boost::optional<utility::string_t> hash) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="trxid"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param>
-  pplx::task<std::shared_ptr<RawTxModel>>
-  unity3dGetrawtransactionGet(boost::optional<utility::string_t> trxid) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="address"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param>
-  pplx::task<std::shared_ptr<GetUTXOsResponseModel>>
-  unity3dGetutxosforaddressGet(
-      boost::optional<utility::string_t> address) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="localCallContractRequest"> (optional)</param>
-  pplx::task<std::shared_ptr<ILocalExecutionResult>> unity3dLocalCallPost(
-      boost::optional<std::shared_ptr<LocalCallContractRequest>>
-          localCallContractRequest) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="txHash"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param>
-  pplx::task<std::shared_ptr<ReceiptResponse>>
-  unity3dReceiptGet(boost::optional<utility::string_t> txHash) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="contractAddress"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param> <param
-  /// name="eventName"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param> <param
-  /// name="topics"> (optional, default to
-  /// std::vector&lt;std::shared_ptr&lt;utility::string_t&gt;&gt;())</param>
-  /// <param name="fromBlock"> (optional, default to 0)</param>
-  /// <param name="toBlock"> (optional, default to 0)</param>
-  pplx::task<std::vector<std::shared_ptr<ReceiptResponse>>>
-  unity3dReceiptSearchGet(
-      boost::optional<utility::string_t> contractAddress,
-      boost::optional<utility::string_t> eventName,
-      boost::optional<std::vector<utility::string_t>> topics,
-      boost::optional<int32_t> fromBlock,
-      boost::optional<int32_t> toBlock) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  pplx::task<void> unity3dReindexAllContractsGet() const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="sendTransactionRequest"> (optional)</param>
-  pplx::task<std::shared_ptr<WalletSendTransactionModel>>
-  unity3dSendTransactionPost(
-      boost::optional<std::shared_ptr<SendTransactionRequest>>
-          sendTransactionRequest) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  pplx::task<std::shared_ptr<TipModel>> unity3dTipGet() const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="contractAddress"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param>
-  pplx::task<void> unity3dUnwatchNftContractGet(
-      boost::optional<utility::string_t> contractAddress) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="address"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param>
-  pplx::task<std::shared_ptr<ValidatedAddress>>
-  unity3dValidateaddressGet(boost::optional<utility::string_t> address) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="contractAddress"> (optional, default to
-  /// utility::conversions::to_string_t(&quot;&quot;))</param>
-  pplx::task<void> unity3dWatchNftContractGet(
-      boost::optional<utility::string_t> contractAddress) const;
-  /// <summary>
-  ///
-  /// </summary>
-  /// <remarks>
-  ///
-  /// </remarks>
-  /// <param name="utilityStringT"> (optional)</param>
-  pplx::task<void> unity3dWatchNftContractsPost(
-      boost::optional<std::vector<utility::string_t>> utilityStringT) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="hash"></param>
+    /// <param name="showTransactionDetails"> (optional, default to false)</param>
+    /// <param name="outputJson"> (optional, default to false)</param>
+    pplx::task<std::shared_ptr<BlockModel>>
+    unity3dBlockGet(utility::string_t hash,
+                    boost::optional<bool> showTransactionDetails,
+                    boost::optional<bool> outputJson) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="contractAddress"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param>
+    pplx::task<std::shared_ptr<NFTContractModel>>
+    unity3dGetAllNftOwnersByContractAddressGet(
+        boost::optional<utility::string_t> contractAddress) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="ownerAddress"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param>
+    pplx::task<std::shared_ptr<OwnedNFTsModel>>
+    unity3dGetOwnedNftsGet(boost::optional<utility::string_t> ownerAddress) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    pplx::task<std::vector<utility::string_t>>
+    unity3dGetWatchedNftContractsGet() const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="address"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param>
+    pplx::task<std::shared_ptr<GetBalanceResponseModel>>
+    unity3dGetaddressbalanceGet(boost::optional<utility::string_t> address) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="hash"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param>
+    pplx::task<std::shared_ptr<BlockHeaderModel>>
+    unity3dGetblockheaderGet(boost::optional<utility::string_t> hash) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="trxid"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param>
+    pplx::task<std::shared_ptr<RawTxModel>>
+    unity3dGetrawtransactionGet(boost::optional<utility::string_t> trxid) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="address"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param>
+    pplx::task<std::shared_ptr<GetUTXOsResponseModel>>
+    unity3dGetutxosforaddressGet(
+        boost::optional<utility::string_t> address) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="localCallContractRequest"> (optional)</param>
+    pplx::task<std::shared_ptr<ILocalExecutionResult>> unity3dLocalCallPost(
+        boost::optional<std::shared_ptr<LocalCallContractRequest>>
+            localCallContractRequest) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="txHash"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param>
+    pplx::task<std::shared_ptr<ReceiptResponse>>
+    unity3dReceiptGet(boost::optional<utility::string_t> txHash) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="contractAddress"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param> <param
+    /// name="eventName"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param> <param
+    /// name="topics"> (optional, default to
+    /// std::vector&lt;std::shared_ptr&lt;utility::string_t&gt;&gt;())</param>
+    /// <param name="fromBlock"> (optional, default to 0)</param>
+    /// <param name="toBlock"> (optional, default to 0)</param>
+    pplx::task<std::vector<std::shared_ptr<ReceiptResponse>>>
+    unity3dReceiptSearchGet(
+        boost::optional<utility::string_t> contractAddress,
+        boost::optional<utility::string_t> eventName,
+        boost::optional<std::vector<utility::string_t>> topics,
+        boost::optional<int32_t> fromBlock,
+        boost::optional<int32_t> toBlock) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    pplx::task<void> unity3dReindexAllContractsGet() const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="sendTransactionRequest"> (optional)</param>
+    pplx::task<std::shared_ptr<WalletSendTransactionModel>>
+    unity3dSendTransactionPost(
+        boost::optional<std::shared_ptr<SendTransactionRequest>>
+            sendTransactionRequest) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    pplx::task<std::shared_ptr<TipModel>> unity3dTipGet() const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="contractAddress"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param>
+    pplx::task<void> unity3dUnwatchNftContractGet(
+        boost::optional<utility::string_t> contractAddress) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="address"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param>
+    pplx::task<std::shared_ptr<ValidatedAddress>>
+    unity3dValidateaddressGet(boost::optional<utility::string_t> address) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="contractAddress"> (optional, default to
+    /// utility::conversions::to_string_t(&quot;&quot;))</param>
+    pplx::task<void> unity3dWatchNftContractGet(
+        boost::optional<utility::string_t> contractAddress) const;
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="utilityStringT"> (optional)</param>
+    pplx::task<void> unity3dWatchNftContractsPost(
+        boost::optional<std::vector<utility::string_t>> utilityStringT) const;
 
 protected:
-  std::shared_ptr<const ApiClient> m_ApiClient;
+    std::shared_ptr<const ApiClient> m_ApiClient;
 };
 
 } // namespace api

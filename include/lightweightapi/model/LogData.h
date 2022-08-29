@@ -18,9 +18,9 @@
 #ifndef STRATIS_API_MODEL_LogData_H_
 #define STRATIS_API_MODEL_LogData_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
+#include "lightweightapi/Object.h"
 
-#include "StratisCPPLightClient/model/AnyType.h"
 #include <cpprest/details/basic_types.h>
 #include <map>
 #include <vector>
@@ -32,51 +32,52 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class LogData : public ModelBase {
+class LogData : public ModelBase
+{
 public:
-  LogData();
-  virtual ~LogData();
+    LogData();
+    virtual ~LogData();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// LogData members
+    /////////////////////////////////////////////
+    /// LogData members
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getEvent() const;
-  bool eventIsSet() const;
-  void unsetEvent();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getEvent() const;
+    bool eventIsSet() const;
+    void unsetEvent();
 
-  void setEvent(const utility::string_t &value);
+    void setEvent(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::map<utility::string_t, std::shared_ptr<AnyType>> &getData();
-  bool dataIsSet() const;
-  void unsetData();
+    /// <summary>
+    ///
+    /// </summary>
+    std::map<utility::string_t, std::shared_ptr<Object>>& getData();
+    bool dataIsSet() const;
+    void unsetData();
 
-  void
-  setData(const std::map<utility::string_t, std::shared_ptr<AnyType>> &value);
+    void
+    setData(const std::map<utility::string_t, std::shared_ptr<Object>>& value);
 
 protected:
-  utility::string_t m_Event;
-  bool m_EventIsSet;
-  std::map<utility::string_t, std::shared_ptr<AnyType>> m_Data;
-  bool m_DataIsSet;
+    utility::string_t m_Event;
+    bool m_EventIsSet;
+    std::map<utility::string_t, std::shared_ptr<Object>> m_Data;
+    bool m_DataIsSet;
 };
 
 } // namespace model

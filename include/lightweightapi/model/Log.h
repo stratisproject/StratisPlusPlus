@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_Log_H_
 #define STRATIS_API_MODEL_Log_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
 #include <vector>
@@ -30,61 +30,62 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class Log : public ModelBase {
+class Log : public ModelBase
+{
 public:
-  Log();
-  virtual ~Log();
+    Log();
+    virtual ~Log();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// Log members
+    /////////////////////////////////////////////
+    /// Log members
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getAddress() const;
-  bool addressIsSet() const;
-  void unsetAddress();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getAddress() const;
+    bool addressIsSet() const;
+    void unsetAddress();
 
-  void setAddress(const utility::string_t &value);
+    void setAddress(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::vector<utility::string_t> &getTopics();
-  bool topicsIsSet() const;
-  void unsetTopics();
+    /// <summary>
+    ///
+    /// </summary>
+    std::vector<utility::string_t>& getTopics();
+    bool topicsIsSet() const;
+    void unsetTopics();
 
-  void setTopics(const std::vector<utility::string_t> &value);
+    void setTopics(const std::vector<utility::string_t>& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getData() const;
-  bool dataIsSet() const;
-  void unsetData();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getData() const;
+    bool dataIsSet() const;
+    void unsetData();
 
-  void setData(const utility::string_t &value);
+    void setData(const utility::string_t& value);
 
 protected:
-  utility::string_t m_Address;
-  bool m_AddressIsSet;
-  std::vector<utility::string_t> m_Topics;
-  bool m_TopicsIsSet;
-  utility::string_t m_Data;
-  bool m_DataIsSet;
+    utility::string_t m_Address;
+    bool m_AddressIsSet;
+    std::vector<utility::string_t> m_Topics;
+    bool m_TopicsIsSet;
+    utility::string_t m_Data;
+    bool m_DataIsSet;
 };
 
 } // namespace model

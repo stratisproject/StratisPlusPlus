@@ -27,3 +27,9 @@
 *.exe
 *.out
 *.app
+
+.history
+Build/
+bin/
+.vscode
+.openapi-generator

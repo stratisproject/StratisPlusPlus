@@ -20,7 +20,16 @@ namespace stratis {
 class StratisManager
 {
 public:
-    StratisManager();
+    StratisManager(
+        std::shared_ptr<stratis::api::UnrealApi> unrealApi,
+        std::shared_ptr<TransactionBuilder> transactionBuilder);
+
+    StratisManager(
+        std::shared_ptr<stratis::api::UnrealApi> unrealApi,
+        std::shared_ptr<TransactionBuilder> transactionBuilder,
+        uint64_t gasPrice,
+        uint64_t gasLimit,
+        uint64_t defaultFee);
 
     std::string generateMnemonic() const;
     std::string getAddress() const;
@@ -48,10 +57,21 @@ public:
         const std::vector<std::string>& parameters,
         uint64_t money);
 
+    pplx::task<std::string> sendCreateContractTransaction(
+        const std::string& contractCode,
+        std::vector<std::unique_ptr<smart_contracts::method_parameter::MethodParameter>>&& parameters,
+        uint64_t money);
+
     pplx::task<std::string> sendCallContractTransaction(
         const Address& contractAddress,
         const std::string& methodName,
         const std::vector<std::string>& parameters,
+        uint64_t money);
+
+    pplx::task<std::string> sendCallContractTransaction(
+        const Address& contractAddress,
+        const std::string& methodName,
+        std::vector<std::unique_ptr<smart_contracts::method_parameter::MethodParameter>>&& parameters,
         uint64_t money);
 
     pplx::task<std::string> makeLocalCall(
@@ -73,6 +93,6 @@ private:
 
     std::shared_ptr<TransactionBuilder> transactionBuilder;
     std::shared_ptr<stratis::api::UnrealApi> unrealApi;
-}
+};
 
 } // namespace stratis

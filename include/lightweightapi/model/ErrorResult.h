@@ -18,10 +18,9 @@
 #ifndef STRATIS_API_MODEL_ErrorResult_H_
 #define STRATIS_API_MODEL_ErrorResult_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
-#include "StratisCPPLightClient/Object.h"
-#include "StratisCPPLightClient/model/AnyType.h"
+#include "lightweightapi/Object.h"
 #include <cpprest/details/basic_types.h>
 #include <vector>
 
@@ -32,83 +31,84 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class ErrorResult : public ModelBase {
+class ErrorResult : public ModelBase
+{
 public:
-  ErrorResult();
-  virtual ~ErrorResult();
+    ErrorResult();
+    virtual ~ErrorResult();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// ErrorResult members
+    /////////////////////////////////////////////
+    /// ErrorResult members
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::shared_ptr<AnyType> getValue() const;
-  bool valueIsSet() const;
-  void unsetValue();
+    /// <summary>
+    ///
+    /// </summary>
+    std::shared_ptr<Object> getValue() const;
+    bool valueIsSet() const;
+    void unsetValue();
 
-  void setValue(const std::shared_ptr<AnyType> &value);
+    void setValue(const std::shared_ptr<Object>& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::vector<std::shared_ptr<Object>> &getFormatters();
-  bool formattersIsSet() const;
-  void unsetFormatters();
+    /// <summary>
+    ///
+    /// </summary>
+    std::vector<std::shared_ptr<Object>>& getFormatters();
+    bool formattersIsSet() const;
+    void unsetFormatters();
 
-  void setFormatters(const std::vector<std::shared_ptr<Object>> &value);
+    void setFormatters(const std::vector<std::shared_ptr<Object>>& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  std::vector<utility::string_t> &getContentTypes();
-  bool contentTypesIsSet() const;
-  void unsetContentTypes();
+    /// <summary>
+    ///
+    /// </summary>
+    std::vector<utility::string_t>& getContentTypes();
+    bool contentTypesIsSet() const;
+    void unsetContentTypes();
 
-  void setContentTypes(const std::vector<utility::string_t> &value);
+    void setContentTypes(const std::vector<utility::string_t>& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getDeclaredType() const;
-  bool declaredTypeIsSet() const;
-  void unsetDeclaredType();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getDeclaredType() const;
+    bool declaredTypeIsSet() const;
+    void unsetDeclaredType();
 
-  void setDeclaredType(const utility::string_t &value);
+    void setDeclaredType(const utility::string_t& value);
 
-  /// <summary>
-  ///
-  /// </summary>
-  int32_t getStatusCode() const;
-  bool statusCodeIsSet() const;
-  void unsetStatusCode();
+    /// <summary>
+    ///
+    /// </summary>
+    int32_t getStatusCode() const;
+    bool statusCodeIsSet() const;
+    void unsetStatusCode();
 
-  void setStatusCode(int32_t value);
+    void setStatusCode(int32_t value);
 
 protected:
-  std::shared_ptr<AnyType> m_Value;
-  bool m_ValueIsSet;
-  std::vector<std::shared_ptr<Object>> m_Formatters;
-  bool m_FormattersIsSet;
-  std::vector<utility::string_t> m_ContentTypes;
-  bool m_ContentTypesIsSet;
-  utility::string_t m_DeclaredType;
-  bool m_DeclaredTypeIsSet;
-  int32_t m_StatusCode;
-  bool m_StatusCodeIsSet;
+    std::shared_ptr<Object> m_Value;
+    bool m_ValueIsSet;
+    std::vector<std::shared_ptr<Object>> m_Formatters;
+    bool m_FormattersIsSet;
+    std::vector<utility::string_t> m_ContentTypes;
+    bool m_ContentTypesIsSet;
+    utility::string_t m_DeclaredType;
+    bool m_DeclaredTypeIsSet;
+    int32_t m_StatusCode;
+    bool m_StatusCodeIsSet;
 };
 
 } // namespace model

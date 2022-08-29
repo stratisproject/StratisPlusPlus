@@ -18,7 +18,7 @@
 #ifndef STRATIS_API_MODEL_RawTxModel_H_
 #define STRATIS_API_MODEL_RawTxModel_H_
 
-#include "StratisCPPLightClient/ModelBase.h"
+#include "lightweightapi/ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
 
@@ -29,39 +29,40 @@ namespace model {
 /// <summary>
 ///
 /// </summary>
-class RawTxModel : public ModelBase {
+class RawTxModel : public ModelBase
+{
 public:
-  RawTxModel();
-  virtual ~RawTxModel();
+    RawTxModel();
+    virtual ~RawTxModel();
 
-  /////////////////////////////////////////////
-  /// ModelBase overrides
+    /////////////////////////////////////////////
+    /// ModelBase overrides
 
-  void validate() override;
+    void validate() override;
 
-  web::json::value toJson() const override;
-  bool fromJson(const web::json::value &json) override;
+    web::json::value toJson() const override;
+    bool fromJson(const web::json::value& json) override;
 
-  void toMultipart(std::shared_ptr<MultipartFormData> multipart,
-                   const utility::string_t &namePrefix) const override;
-  bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
-                     const utility::string_t &namePrefix) override;
+    void toMultipart(std::shared_ptr<MultipartFormData> multipart,
+                     const utility::string_t& namePrefix) const override;
+    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
+                       const utility::string_t& namePrefix) override;
 
-  /////////////////////////////////////////////
-  /// RawTxModel members
+    /////////////////////////////////////////////
+    /// RawTxModel members
 
-  /// <summary>
-  ///
-  /// </summary>
-  utility::string_t getHex() const;
-  bool hexIsSet() const;
-  void unsetHex();
+    /// <summary>
+    ///
+    /// </summary>
+    utility::string_t getHex() const;
+    bool hexIsSet() const;
+    void unsetHex();
 
-  void setHex(const utility::string_t &value);
+    void setHex(const utility::string_t& value);
 
 protected:
-  utility::string_t m_Hex;
-  bool m_HexIsSet;
+    utility::string_t m_Hex;
+    bool m_HexIsSet;
 };
 
 } // namespace model
