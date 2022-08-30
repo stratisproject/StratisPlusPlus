@@ -35,8 +35,8 @@ UnrealApi::unity3dBlockGet(utility::string_t hash,
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/block");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/block");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -203,8 +203,8 @@ UnrealApi::unity3dGetAllNftOwnersByContractAddressGet(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath = utility::conversions::to_string_t(
-        "/Unity3d/get-all-nft-owners-by-contract-address");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() + utility::conversions::to_string_t(
+                                                                                  "/Unity3d/get-all-nft-owners-by-contract-address");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -366,8 +366,8 @@ pplx::task<std::shared_ptr<OwnedNFTsModel>> UnrealApi::unity3dGetOwnedNftsGet(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/get-owned-nfts");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/get-owned-nfts");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -523,8 +523,8 @@ UnrealApi::unity3dGetWatchedNftContractsGet() const
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/get-watched-nft-contracts");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/get-watched-nft-contracts");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -680,8 +680,8 @@ UnrealApi::unity3dGetaddressbalanceGet(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/getaddressbalance");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/getaddressbalance");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -840,8 +840,8 @@ UnrealApi::unity3dGetblockheaderGet(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/getblockheader");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/getblockheader");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -998,8 +998,8 @@ pplx::task<std::shared_ptr<RawTxModel>> UnrealApi::unity3dGetrawtransactionGet(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/getrawtransaction");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/getrawtransaction");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -1157,8 +1157,8 @@ UnrealApi::unity3dGetutxosforaddressGet(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/getutxosforaddress");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/getutxosforaddress");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -1318,8 +1318,8 @@ UnrealApi::unity3dLocalCallPost(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/local-call");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/local-call");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -1497,8 +1497,8 @@ UnrealApi::unity3dReceiptGet(boost::optional<utility::string_t> txHash) const
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/receipt");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/receipt");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -1659,8 +1659,8 @@ UnrealApi::unity3dReceiptSearchGet(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/receipt-search");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/receipt-search");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -1834,8 +1834,8 @@ pplx::task<void> UnrealApi::unity3dReindexAllContractsGet() const
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/reindex-all-contracts");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/reindex-all-contracts");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -1966,8 +1966,8 @@ UnrealApi::unity3dSendTransactionPost(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/send-transaction");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/send-transaction");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -2145,8 +2145,8 @@ pplx::task<std::shared_ptr<TipModel>> UnrealApi::unity3dTipGet() const
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/tip");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/tip");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -2297,8 +2297,8 @@ pplx::task<void> UnrealApi::unity3dUnwatchNftContractGet(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/unwatch-nft-contract");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/unwatch-nft-contract");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -2433,8 +2433,8 @@ UnrealApi::unity3dValidateaddressGet(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/validateaddress");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/validateaddress");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -2592,8 +2592,8 @@ pplx::task<void> UnrealApi::unity3dWatchNftContractGet(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/watch-nft-contract");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/watch-nft-contract");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(
@@ -2727,8 +2727,8 @@ pplx::task<void> UnrealApi::unity3dWatchNftContractsPost(
 {
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration(
         m_ApiClient->getConfiguration());
-    utility::string_t localVarPath =
-        utility::conversions::to_string_t("/Unity3d/watch-nft-contracts");
+    utility::string_t localVarPath = localVarApiConfiguration->getBaseUrl() +
+                                     utility::conversions::to_string_t("/Unity3d/watch-nft-contracts");
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams(

@@ -32,7 +32,10 @@ namespace api {
 using namespace stratis::api::model;
 
 ApiClient::ApiClient(std::shared_ptr<const ApiConfiguration> configuration)
-    : m_Configuration(configuration) {}
+    : m_Configuration(configuration), cancellationToken(pplx::cancellation_token_source().get_token())
+{
+}
+
 ApiClient::~ApiClient() {}
 
 const ApiClient::ResponseHandlerType& ApiClient::getResponseHandler() const
@@ -190,7 +193,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
                               m_Configuration->getUserAgent());
     }
 
-    return client.request(request);
+    return client.request(request, cancellationToken);
 }
 
 } // namespace api

@@ -79,6 +79,7 @@ public:
 protected:
     ResponseHandlerType m_ResponseHandler;
     std::shared_ptr<const ApiConfiguration> m_Configuration;
+    pplx::cancellation_token cancellationToken;
 };
 
 template <class T>
