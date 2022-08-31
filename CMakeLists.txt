@@ -33,10 +33,10 @@ include(CMakePackageConfigHelpers)
 
 file(GLOB_RECURSE HEADER_FILES "include/*.h")
 file(GLOB_RECURSE SOURCE_FILES "src/*.cpp" "src/*.c")
-file(GLOB_RECURSE TEST_FILES "test/*.cpp" "test/*.c" "test/*.h")
+file(GLOB_RECURSE DEMO_FILES "demo/*.cpp" "demo/*.c" "demo/*.h")
 
 add_library(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES})
-add_executable(demo ${TEST_FILES})
+add_executable(demo ${DEMO_FILES})
 
 include_directories("${OPENSSL_INCLUDE_DIR}")
 
